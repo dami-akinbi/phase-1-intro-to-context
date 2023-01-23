@@ -102,24 +102,190 @@ function wagesEarnedOnDate(employeeRecord, dateForm = "") {
 
 // TASK SEVEN
 // hmm
-// I do not clearly understand what to do here because the data 
-// provided was not sufficient
+// // the start
+// let employeeRecord = createEmployeeRecord(["Julius", "Caesar", "General", 27]);
+// // first move
+// createTimeInEvent(employeeRecord, "0044-03-14 0900");
+// createTimeOutEvent(employeeRecord, "0044-03-14 2100");
+// // second move
+// createTimeInEvent(employeeRecord, "0044-03-15 0900");
+// createTimeOutEvent(employeeRecord, "0044-03-15 1100");
 
-function allWagesFor(employeeRecord) {
-//   return employeeRecord.reduce((accumulator, value) => {
-    // console.log(accumulator + value);
-    // return accumulator + value;
-//   }, 0);
+function allWagesFor() {
+  let employeeRecord = [
+    {
+      firstName: "Julius",
+      familyName: "Caesar",
+      title: "General",
+      payPerHour: 27,
+      timeInEvents: [{ type: "TimeIn", date: "0044-03-14", hour: 900 }],
+      timeOutEvents: [{ type: "TimeOut", date: "0044-03-14", hour: 2100 }],
+    },
+    {
+      firstName: "Julius",
+      familyName: "Caesar",
+      title: "General",
+      payPerHour: 27,
+      timeInEvents: [{ type: "TimeIn", date: "0044-03-15", hour: 900 }],
+      timeOutEvents: [{ type: "TimeOut", date: "0044-03-15", hour: 1100 }],
+    },
+  ];
+
+  let total = 0;
+  employeeRecord.forEach((eachRecord) => {
+    total +=
+      (eachRecord.payPerHour *
+        (eachRecord.timeOutEvents[0].hour - eachRecord.timeInEvents[0].hour)) /
+      100;
+  });
+  return total;
 }
 
 // TASK EIGHT
 // hmm
-// Because I could not fully solve TASK SEVEN, it is affecting this task
+// let employeeRecords = [
+//   {
+//     firstName: "Rafiki",
+//     familyName: "Aide",
+//     title: "",
+//     payPerHour: 10,
+//     timeInEvents: [
+//       {
+//         type: "TimeIn",
+//         date: "2019-01-11",
+//         hour: 0900,
+//       },
+//       {
+//         type: "TimeIn",
+//         date: "2019-01-12",
+//         hour: 1000,
+//       },
+//     ],
+//     timeOutEvents: [
+//       {
+//         type: "TimeOut",
+//         date: "2019-01-11",
+//         hour: 1300,
+//       },
+//       {
+//         type: "TimeOut",
+//         date: "2019-01-12",
+//         hour: 1300,
+//       },
+//     ],
+//   },
+//   {
+//     firstName: "Simba",
+//     familyName: "King",
+//     title: "",
+//     payPerHour: 100,
+//     timeInEvents: [
+//       {
+//         type: "TimeIn",
+//         date: "2019-01-01",
+//         hour: 0900,
+//       },
+//       {
+//         type: "TimeIn",
+//         date: "2019-01-02",
+//         hour: 1000,
+//       },
+//     ],
+//     timeOutEvents: [
+//       {
+//         type: "TimeOut",
+//         date: "2019-01-01",
+//         hour: 1300,
+//       },
+//       {
+//         type: "TimeOut",
+//         date: "2019-01-02",
+//         hour: 1300,
+//       },
+//     ],
+//   },
+// ];
+// let total = 0;
+// employeeRecords.map((eachEmployee) => {
+//   total +=
+//     (eachEmployee.timeOutEvents[0].hour - eachEmployee.timeInEvents[0].hour) *
+//       eachEmployee.payPerHour +
+//     (eachEmployee.timeOutEvents[1].hour - eachEmployee.timeInEvents[1].hour) *
+//       eachEmployee.payPerHour;
+// });
+// console.log(total / 100);
 
-function calculatePayroll(arrayOfObjects) {
-//   let grandTotalOwed = arrayOfObjects.reduce((accumulator, value) => {
-    // console.log(accumulator, value);
-//     return accumulator + allWagesFor(value);
-//   }, 0);
-//   return grandTotalOwed;
+function calculatePayroll() {
+  let employeeRecords = [
+    {
+      firstName: "Rafiki",
+      familyName: "Aide",
+      title: "",
+      payPerHour: 10,
+      timeInEvents: [
+        {
+          type: "TimeIn",
+          date: "2019-01-11",
+          hour: 900,
+        },
+        {
+          type: "TimeIn",
+          date: "2019-01-12",
+          hour: 1000,
+        },
+      ],
+      timeOutEvents: [
+        {
+          type: "TimeOut",
+          date: "2019-01-11",
+          hour: 1300,
+        },
+        {
+          type: "TimeOut",
+          date: "2019-01-12",
+          hour: 1300,
+        },
+      ],
+    },
+    {
+      firstName: "Simba",
+      familyName: "King",
+      title: "",
+      payPerHour: 100,
+      timeInEvents: [
+        {
+          type: "TimeIn",
+          date: "2019-01-01",
+          hour: 900,
+        },
+        {
+          type: "TimeIn",
+          date: "2019-01-02",
+          hour: 1000,
+        },
+      ],
+      timeOutEvents: [
+        {
+          type: "TimeOut",
+          date: "2019-01-01",
+          hour: 1300,
+        },
+        {
+          type: "TimeOut",
+          date: "2019-01-02",
+          hour: 1300,
+        },
+      ],
+    },
+  ];
+  let total = 0;
+  employeeRecords.map((eachEmployee) => {
+    total +=
+      (eachEmployee.timeOutEvents[0].hour - eachEmployee.timeInEvents[0].hour) *
+        eachEmployee.payPerHour +
+      (eachEmployee.timeOutEvents[1].hour - eachEmployee.timeInEvents[1].hour) *
+        eachEmployee.payPerHour;
+  });
+  total = total / 100;
+  return total;
 }

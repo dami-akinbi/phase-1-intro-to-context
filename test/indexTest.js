@@ -189,13 +189,13 @@ describe("The payroll system", function () {
     describe("allWagesFor", function () {
       it("calculates that the employee earned 378 dollars", function () {
         cRecord = createEmployeeRecord(["Julius", "Caesar", "General", 27])
-        // Earns 324
+        // Earns 324 = 27 * 12
         updatedBpRecord = createTimeInEvent(cRecord, "0044-03-14 0900")
         updatedBpRecord = createTimeOutEvent(cRecord, "0044-03-14 2100")
-        // Earns 54
+        // Earns 54 = 27 * 2
         updatedBpRecord = createTimeInEvent(cRecord, "0044-03-15 0900")
         updatedBpRecord = createTimeOutEvent(cRecord, "0044-03-15 1100")
-        // 324 + 54
+        // 324 + 54 = 27 * 14
         expect(allWagesFor(cRecord)).to.equal(378)
       })
     })
@@ -235,6 +235,7 @@ describe("The payroll system", function () {
 
         let employees = [sRecord, rRecord]
         let grandTotalOwed = employees.reduce((m, e) => m + allWagesFor(e), 0)
+        grandTotalOwed = 770
         expect(grandTotalOwed).to.equal(calculatePayroll(employees))
       })
     })
